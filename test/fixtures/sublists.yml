@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  parentlist: MyString
+  name: MyString
+
+two:
+  parentlist: MyString
+  name: MyString

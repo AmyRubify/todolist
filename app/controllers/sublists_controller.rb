@@ -1,0 +1,2 @@
+class SublistsController < ApplicationController
+end
