@@ -1,0 +1,7 @@
+<h1>My list</h1>
+<%= link_to 'New list' , new_list_url %>
+<% @lists.each do |list| %>
+<ul>
+<li><%= link_to list.name, list_url(list.id) %></li><%= link_to 'Delete', list_url(list.id), :method => :delete %>
+</ul>
+<% end %>

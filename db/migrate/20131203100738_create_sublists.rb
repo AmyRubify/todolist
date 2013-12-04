@@ -3,7 +3,7 @@ class CreateSublists < ActiveRecord::Migration
     create_table :sublists do |t|
       t.string :parentlist
       t.string :name
-
+      
       t.timestamps
     end
   end

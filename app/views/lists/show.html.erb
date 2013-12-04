@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    function f1() {
+       var e1 = document.getElementById("group1");
+       var e2 = document.getElementById("group2");
+          e1.style.display = 'none';
+          e2.style.display = 'block';
+    }
+    function f2() {
+       var e1 = document.getElementById("group1");
+       var e2 = document.getElementById("group2");
+          e2.style.display = 'none';
+          e1.style.display = 'block';
+    }
+</script>
+List Name: <%= @list.name %><br><br>
+<a href="/lists">Back</a><br><br>
+<% @sublists.each do |sublist| %>
+  <%= link_to 'Update', sublist.id %>
+  <input type="checkbox" ><%= sublist.name %><br>
+<% end %><br><br>
+<div id="group1">
+  <button type="button" onclick="f1()">Add another item</button>
+</div>
+<div id="group2" style="display:none;">
+  <%= form_for([@list, @list.sublists.build]) do |f| %>
+    <p>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+  <button type="button" onclick="f2()">Close</button>
+</div>
+<br><br>
+<% @sublists_2.each do |sublist2| %>
+<input type="checkbox" checked><%= sublist2.name %><br>
+<% end %><br><br>

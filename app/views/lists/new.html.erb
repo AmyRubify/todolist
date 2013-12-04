@@ -1,0 +1,9 @@
+<%= form_for @list do |f| %>
+<label>Name</label>
+<%= f.text_field :name, {:class => "name"} %>
+<br/>
+<label>Author</label>
+<%= f.text_field :author %>
+<br/>
+<%= f.submit %>
+<% end %>
