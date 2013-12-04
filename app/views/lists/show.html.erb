@@ -15,7 +15,6 @@
 List Name: <%= @list.name %><br><br>
 <a href="/lists">Back</a><br><br>
 <% @sublists.each do |sublist| %>
-  <%= link_to 'Update', sublist.id %>
   <input type="checkbox" ><%= sublist.name %><br>
 <% end %><br><br>
 <div id="group1">

@@ -40,4 +40,10 @@ class SublistsController < ApplicationController
       render :action => "edit"
     end    
   end
+  
+  def update_status
+    @sublist = Sublist.find(params[:id])
+    @sublist.status = !@sublist.status 
+    @sublist.save
+  end  
 end
