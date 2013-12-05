@@ -1,0 +1,3 @@
+<% @sublists.each do |sublist| %>
+  <input type="checkbox" data-list-id="<%= @list.id %>" data-sublist-id="<%= sublist.id %>" checked><%= sublist.name %><br>
+<% end %><br><br>
