@@ -43,11 +43,17 @@
       <div id= "content2">
         <img src="assets/tada-mark-small.gif" width="59" height="49" alt="Tada Mark Small">
         <div id= "content3">
-          <h3>Username :<input></input></h3>
-          <h3>Password :<input></input></h3>
-          <div id= "content4">
-            <input type="checkbox">Remember me<br>
-          </div>
+          <%= form_for @user do |f| %>
+            <p>
+              <%= f.text_field :username %>
+            </p>
+            <p>
+              <%= f.text_field :password %>
+            </p>
+            <p>
+              <%= f.submit %>
+            </p>
+          <% end %>
         </div>
       </div>
     </div>

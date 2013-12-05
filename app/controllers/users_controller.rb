@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   def login
+    
   end
   
   def index
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:list].permit(:username, :password, :name))
+    @user = User.new(params[:list])
     if @user.save
       redirect_to :action => :index
     else
@@ -37,7 +38,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:list].permit(:username, :password, :name))
+    if @user.update_attributes(params[:list])
       redirect_to :action => :index
     else
       render :action => "edit"

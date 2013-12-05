@@ -3,5 +3,6 @@
 <% @lists.each do |list| %>
 <ul>
 <li><%= link_to list.name, list_url(list.id) %></li><%= link_to 'Delete', list_url(list.id), :method => :delete %>
+<%= list.count_sublists_not_completed %> left
 </ul>
 <% end %>

@@ -19,12 +19,9 @@ class SublistsController < ApplicationController
 
   def create
     @list = List.find(params[:list_id])
-    @sublist = @list.sublists.new(params[:sublist])
-    if @sublist.save
-      redirect_to list_path(@list)
-    else
-      render :action => "new"      
-    end
+    @sublist = @list.sublists.create(params[:sublist])
+    @sublists_2 = @list.sublists.where(:status => false)
+    render 'lists/sublists_isnot_completed', :layout => false
   end
 
   def edit
@@ -33,7 +30,6 @@ class SublistsController < ApplicationController
 
   def update
     @sublist = Sublist.find(params[:id])
-    @sublist.status = true
     if @sublist.update_attributes(params[:sublist])
       redirect_to list_path(@list)
     else
@@ -45,5 +41,6 @@ class SublistsController < ApplicationController
     @sublist = Sublist.find(params[:id])
     @sublist.status = !@sublist.status 
     @sublist.save
+    render :text => "successful"
   end  
 end

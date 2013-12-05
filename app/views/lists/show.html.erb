@@ -1,37 +1,48 @@
 <script type="text/javascript">
-    function f1() {
-       var e1 = document.getElementById("group1");
-       var e2 = document.getElementById("group2");
-          e1.style.display = 'none';
-          e2.style.display = 'block';
-    }
-    function f2() {
-       var e1 = document.getElementById("group1");
-       var e2 = document.getElementById("group2");
-          e2.style.display = 'none';
-          e1.style.display = 'block';
-    }
+    // function f1() {
+    //    var e1 = document.getElementById("group1");
+    //    var e2 = document.getElementById("group2");
+    //       e1.style.display = 'none';
+    //       e2.style.display = 'block';
+    // }
+    // function f2() {
+    //    var e1 = document.getElementById("group1");
+    //    var e2 = document.getElementById("group2");
+    //       e2.style.display = 'none';
+    //       e1.style.display = 'block';
+    // }
+    // function f3(id1,id2) {
+    //   $.ajax({
+    //         type: 'POST',
+    //         url: "/lists/"+ id1 + "/sublists/" + id2 + "/update_status",
+    //       })
+    // }
 </script>
-List Name: <%= @list.name %><br><br>
+<br><br>
+<h1><%= @list.name %></h1>
+<%= link_to 'Edit', edit_list_url(@list.id) %>
 <a href="/lists">Back</a><br><br>
-<% @sublists.each do |sublist| %>
-  <input type="checkbox" ><%= sublist.name %><br>
-<% end %><br><br>
+<div class="sublists isnot-completed">
+  <% @sublists.each do |sublist| %>
+    <input type="checkbox" data-list-id="<%= @list.id %>" data-sublist-id="<%= sublist.id %>"><%= sublist.name %><br>
+  <% end %><br>
+</div>
 <div id="group1">
-  <button type="button" onclick="f1()">Add another item</button>
+  <button type="button">Add another item</button>
 </div>
 <div id="group2" style="display:none;">
   <%= form_for([@list, @list.sublists.build]) do |f| %>
     <p>
       <%= f.text_field :name %>
     </p>
-    <p>
-      <%= f.submit %>
-    </p>
+    <%= f.submit %>
   <% end %>
-  <button type="button" onclick="f2()">Close</button>
+  <br>
+  <button type="button">Close</button>
 </div>
-<br><br>
-<% @sublists_2.each do |sublist2| %>
-<input type="checkbox" checked><%= sublist2.name %><br>
-<% end %><br><br>
+<br>
+<div class="sublists is-completed">
+  <% @sublists_2.each do |sublist2| %>
+    <input type="checkbox" data-list-id="<%= @list.id %>" data-sublist-id="<%= sublist2.id %>" checked><%= sublist2.name %><br>
+  <% end %><br><br>
+</div>
