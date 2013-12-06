@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  
+ # before_filter :authenticate_user!
   def index
     @lists = List.all
   end
@@ -18,7 +18,7 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    @list.author = "Amy"
+    # @list.author = "Amy"
   end
 
   def create
